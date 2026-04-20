@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Syne', system-ui, sans-serif;
+  background-color: #0E0E10;
+  color: #E5E5E5;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0E0E10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A1A1AA;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4D4D8;
+}
+
+/* Three.js canvas */
+canvas {
+  display: block;
+}
+
+/* Safe padding utility */
+@layer components {
+  .px-safe {
+    @apply px-4 md:px-8 lg:px-16;
+  }
+
+  .py-safe {
+    @apply py-8 md:py-16 lg:py-24;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20 rounded-lg;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl bg-dark-bg/40 border border-accent/10 rounded-xl;
+  }
+
+  /* Glow effects */
+  .glow-sm {
+    @apply shadow-glow;
+  }
+
+  .glow-lg {
+    @apply shadow-glow-lg;
+  }
+
+  /* Text effects */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-light-text bg-clip-text text-transparent;
+  }
+}
+
+/* Grain texture overlay */
+.grain {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cinematic fade animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Glow effect on demand */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(212, 212, 216, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 212, 216, 0.5);
+  }
+}
+
+/* Subtle animations */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out;
+}
+
+/* Elegant image hover effect */
+.img-hover-lift {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.img-hover-lift:hover {
+  transform: translateY(-8px);
+  filter: brightness(1.05);
+}
+
+/* Selection styling */
+::selection {
+  background-color: #D4D4D8;
+  color: #0E0E10;
+}
+
+::-moz-selection {
+  background-color: #D4D4D8;
+  color: #0E0E10;
+}
+
+/* Video element styling */
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent layout shift from scrollbar */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Cinematic image styling */
+img {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Focus styling for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #D4D4D8;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions globally */
+@layer utilities {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .transition-smooth-lg {
+    @apply transition-all duration-500 ease-out;
+  }
+}
+
